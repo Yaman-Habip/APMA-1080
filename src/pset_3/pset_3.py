@@ -1,3 +1,5 @@
+from pset_3.noisy_sequence import HMMSample
+
 with open("X.txt", "r") as file:
     X = file.read()
 
@@ -20,3 +22,18 @@ y_freq = Y.count("1234") / (len(Y) - 2)
 print(f"P(X=ACGT) = {x_freq}")
 print(f"P(Y=1234) = {y_freq}")
 print(f"Ratio = {x_freq/y_freq}")
+
+
+n_1 = 20
+mu_1 = [0.5, 0, 0.5, 0, 0]
+P_1 = [
+    [0, 1, 0, 0, 0],
+    [0.2, 0.0, 0.8, 0, 0],
+    [0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 1],
+    [0.9, 0, 0.1, 0, 0],
+]
+C_1 = [[1, 0], [1, 0], [0, 1], [0, 1], [0, 1]]
+
+for _ in range(5):
+    print(HMMSample(C_1, P_1, mu_1, n_1)[1])

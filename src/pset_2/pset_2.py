@@ -1,17 +1,6 @@
 import numpy as np
 from tabulate import tabulate
-
-
-def MCSample(P, miu, n):
-    choices = list(range(1, len(miu) + 1))
-    current = np.random.choice(choices, p=miu)
-    states = [current]
-    for _ in range(n - 1):
-        current = np.random.choice(choices, p=P[current - 1])
-        states.append(current)
-
-    return states
-
+from pset_2.mc_sample import MCSample
 
 transition = [[0.1, 0.8, 0.1, 0], [0, 0, 0.5, 0.5], [0, 0, 0, 1], [0.5, 0.2, 0.2, 0.1]]
 probs = [0.25, 0.25, 0.25, 0.25]
