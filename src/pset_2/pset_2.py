@@ -2,7 +2,7 @@ import numpy as np
 from tabulate import tabulate
 
 
-def X(P, miu, n):
+def MCSample(P, miu, n):
     choices = list(range(1, len(miu) + 1))
     current = np.random.choice(choices, p=miu)
     states = [current]
@@ -17,7 +17,7 @@ transition = [[0.1, 0.8, 0.1, 0], [0, 0, 0.5, 0.5], [0, 0, 0, 1], [0.5, 0.2, 0.2
 probs = [0.25, 0.25, 0.25, 0.25]
 iters = 10**5
 
-result = X(transition, probs, iters)
+result = MCSample(transition, probs, iters)
 
 p_approx = np.zeros((4, 4))
 _, counts = np.unique(result, return_counts=True)
